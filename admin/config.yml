@@ -1,0 +1,91 @@
+backend:
+  name: git-gateway
+  branch: main
+
+publish_mode: editorial_workflow
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+site_url: "https://YOUR_DOMAIN_HERE"
+display_url: "https://YOUR_DOMAIN_HERE"
+logo_url: "/images/uploads/church-logo.png"
+
+collections:
+  - name: "homepage"
+    label: "Homepage"
+    description: "Edit homepage content only (no design changes)."
+    files:
+      - name: "home"
+        label: "Homepage Content"
+        file: "content/home.json"
+        format: "json"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Subhead", name: "subhead", widget: "text" }
+              - { label: "Primary Button Text", name: "primaryButtonText", widget: "string" }
+              - { label: "Primary Button URL", name: "primaryButtonUrl", widget: "string" }
+              - { label: "Secondary Button Text", name: "secondaryButtonText", widget: "string", required: false }
+              - { label: "Secondary Button URL", name: "secondaryButtonUrl", widget: "string", required: false }
+              - { label: "Hero Image", name: "heroImage", widget: "image", required: false }
+
+          - label: "Quick Links"
+            name: "quickLinks"
+            widget: "list"
+            summary: "{{fields.label}} → {{fields.url}}"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+
+  - name: "announcements"
+    label: "Announcements"
+    description: "Manage announcement cards shown on the site."
+    files:
+      - name: "announcements"
+        label: "Announcements List"
+        file: "content/announcements.json"
+        format: "json"
+        fields:
+          - { label: "Updated Date", name: "updatedDate", widget: "datetime", format: "YYYY-MM-DD", time_format: false }
+          - label: "Announcement Items"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+              - { label: "Image", name: "image", widget: "image", required: false }
+              - { label: "Link Text", name: "linkText", widget: "string", required: false }
+              - { label: "Link URL", name: "linkUrl", widget: "string", required: false }
+              - { label: "Pinned (show first)", name: "pinned", widget: "boolean", default: false, required: false }
+
+  - name: "bulletin"
+    label: "Bulletin"
+    description: "Update weekly bulletin PDF + optional archive."
+    files:
+      - name: "bulletin"
+        label: "Current Bulletin"
+        file: "content/bulletin.json"
+        format: "json"
+        fields:
+          - label: "Current"
+            name: "current"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", time_format: false }
+              - { label: "Bulletin PDF", name: "pdfUrl", widget: "file" }
+              - { label: "Thumbnail Image", name: "thumbnailImage", widget: "image", required: false }
+
+          - label: "Archive"
+            name: "archive"
+            widget: "list"
+            required: false
+            summary: "{{fields.date}}"
+            fields:
+              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", time_format: false }
+              - { label: "Bulletin PDF", name: "pdfUrl", widget: "file" }

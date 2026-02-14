@@ -1,0 +1,13 @@
+{
+  "updatedDate": "2026-02-13",
+  "items": [
+    {
+      "title": "Welcome to NMC",
+      "body": "We are glad you're here. Join us Sunday at 9:00 or 11:00 AM.",
+      "linkText": "Learn More",
+      "linkUrl": "new-here.html",
+      "image": "",
+      "pinned": true
+    }
+  ]
+}

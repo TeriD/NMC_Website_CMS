@@ -1,0 +1,11 @@
+{
+  "hero": {
+    "headline": "Nicholasville Methodist Church",
+    "subhead": "A place to belong, grow, and serve.",
+    "primaryButtonText": "Plan a Visit",
+    "primaryButtonUrl": "new-here.html",
+    "secondaryButtonText": "Watch Online",
+    "secondaryButtonUrl": "watch.html",
+    "heroImage": "images/hero.jpg"
+  }
+}
